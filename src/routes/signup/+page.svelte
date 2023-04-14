@@ -1,14 +1,12 @@
 <script lang="ts">
     export let form;
-
-    let thisForm:HTMLFormElement;
 </script>
 
 
 
 <h2>*ADD WEBSITE LOGO HERE*</h2>
 
-<form bind:this={thisForm} method="post" action="?/signup">
+<form method="post" action="?/signup">
     <div class="form-item">
         <label for="firstName">Firstname<sup><small>*</small></sup></label>
         <input value={form?.firstName?? ''} id="firstName" type="text" name="firstName" required/>
