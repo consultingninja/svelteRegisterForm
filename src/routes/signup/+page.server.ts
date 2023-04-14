@@ -27,7 +27,7 @@ export const actions:Actions = {
             lastName,
             email,
             urlChoice,
-            password
+            password:''
         }
 
         const isPassStrong = checkPassword(password.toString());
@@ -76,10 +76,12 @@ export const actions:Actions = {
             return fail(500,SignUpResponse)
         }
 
+        SignUpResponse.password = password;
         const userToInsert = await registerFormToUserWithoutId(SignUpResponse);
         const resultOfInsert = await registerUser(collection,userToInsert);
         if(resultOfInsert.acknowledged && resultOfInsert.insertedId) throw redirect(303,`/${userToInsert.URL}`);
 
+        SignUpResponse.password = '';
         SignUpResponse.error = true;
         SignUpResponse.message = "Error registering User!";
         return fail(503,SignUpResponse)

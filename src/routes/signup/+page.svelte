@@ -1,5 +1,4 @@
 <script lang="ts">
-    import {enhance} from '$app/forms';
     export let form;
 
     let thisForm:HTMLFormElement;
@@ -9,7 +8,7 @@
 
 <h2>*ADD WEBSITE LOGO HERE*</h2>
 
-<form bind:this={thisForm} use:enhance method="post" action="?/signup">
+<form bind:this={thisForm} method="post" action="?/signup">
     <div class="form-item">
         <label for="firstName">Firstname<sup><small>*</small></sup></label>
         <input value={form?.firstName?? ''} id="firstName" type="text" name="firstName" required/>
@@ -28,7 +27,7 @@
     </div>
     <div class="form-item">
         <label for="userurl">Choose a URL<sup><small>*</small></sup></label>
-        <input value={form?.URL?? ''} class:fieldError={form?.urlTaken} id="userurl" type="text" name="userurl" required/>
+        <input value={form?.urlChoice?? ''} class:fieldError={form?.urlTaken} id="userurl" type="text" name="userurl" required/>
     </div>
 
     <div class="form-item">
